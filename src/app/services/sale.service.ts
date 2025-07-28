@@ -15,7 +15,7 @@ export class SaleService {
     });
 
 
-     private apiUrl = 'http://localhost:8080/sale';
+     private apiUrl = 'https://gestiondiprontopizzafullstack.onrender.com/sale';
 
      constructor(private http: HttpClient) {}
 

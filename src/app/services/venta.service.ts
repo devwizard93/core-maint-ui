@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class VentaService {
-  private apiUrl = 'http://localhost:8080/venta';
+  private apiUrl = 'https://gestiondiprontopizzafullstack.onrender.com/venta';
 
   constructor(private http: HttpClient) {}
 

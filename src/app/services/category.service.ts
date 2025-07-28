@@ -12,7 +12,7 @@ export class CategoryService {
     'Authorization': 'Basic ' + btoa('admin:admin123')
   });
 
-   private apiUrl = 'http://localhost:8080/categories';
+   private apiUrl = 'https://gestiondiprontopizzafullstack.onrender.com/categories';
 
 
    constructor(private http: HttpClient) {}
