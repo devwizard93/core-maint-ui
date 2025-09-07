@@ -1,3 +1,23 @@
-nav {
-  border-right: 1px solid #ccc;
+.sidebar {
+  width: 250px;
+  transition: width 0.3s ease;
+  padding: 1rem;
+
+  .nav-link {
+    transition: opacity 0.3s ease;
+  }
+}
+
+.collapsed-sidebar {
+  width: 60px;
+  padding: 1rem 0.5rem;
+  overflow-x: hidden;
+
+  .nav-link {
+    text-align: center;
+  }
+
+  .label {
+    display: none;
+  }
 }

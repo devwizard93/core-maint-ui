@@ -12,7 +12,8 @@ export class ProductService {
     'Authorization': 'Basic ' + btoa('admin:admin123')
   });
 
-  private apiUrl = 'https://gestiondiprontopizzafullstack.onrender.com/products';
+  //private apiUrl = 'https://gestiondiprontopizzafullstack.onrender.com/products';
+  private apiUrl = 'http://localhost:8080/api/products';
 
 
   constructor(private http: HttpClient) {}

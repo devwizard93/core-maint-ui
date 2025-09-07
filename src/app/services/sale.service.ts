@@ -15,12 +15,13 @@ export class SaleService {
     });
 
 
-     private apiUrl = 'https://gestiondiprontopizzafullstack.onrender.com/sale';
+     //private apiUrl = 'https://gestiondiprontopizzafullstack.onrender.com/sale';
+     private apiUrl = 'http://localhost:8080/api/sale';
 
      constructor(private http: HttpClient) {}
 
       getAllSale(): Observable<Sale[]> {
-        return this.http.get<Sale[]>(this.apiUrl);
+        return this.http.get<Sale[]>(this.apiUrl, { headers: this.headers });
       }
 
       createSale(sale: Sale): Observable<Sale> {

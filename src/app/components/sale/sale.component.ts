@@ -37,7 +37,6 @@ export class SaleComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCategory();
-    this.loadProduct();
   }
 
   loadCategory(): void {

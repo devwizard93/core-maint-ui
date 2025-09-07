@@ -5,20 +5,16 @@ import { SaleComponent } from './components/sale/sale.component';
 import { CategoryComponent } from './components/category/category.component';
 import { ProductComponent } from './components/product/product.component';
 import { EditSaleComponent } from './components/edit-sale/edit-sale.component';
-
-
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { BlankLayoutComponent } from './layout/blank-layout/blank-layout.component';
+import { SidebarLayoutComponent } from './layout/sidebar-layout/sidebar-layout.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [SaleComponent, SidebarComponent, RouterOutlet, CategoryComponent, ProductComponent, EditSaleComponent],
-  template: `
-    <div class="d-flex">
-      <app-sidebar></app-sidebar>
-      <div class="p-4 flex-grow-1 w-100">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
-  `,
-})
+  imports: [SaleComponent, SidebarComponent, RouterOutlet,
+  CategoryComponent, ProductComponent,
+  EditSaleComponent, NotFoundComponent, BlankLayoutComponent, SidebarLayoutComponent],
+  template: `<router-outlet></router-outlet>`
+ })
 export class AppComponent {}

@@ -12,7 +12,8 @@ export class CategoryService {
     'Authorization': 'Basic ' + btoa('admin:admin123')
   });
 
-   private apiUrl = 'https://gestiondiprontopizzafullstack.onrender.com/categories';
+   //private apiUrl = 'https://gestiondiprontopizzafullstack.onrender.com/categories';
+   private apiUrl = 'http://localhost:8080/api/categories';
 
 
    constructor(private http: HttpClient) {}
@@ -26,7 +27,7 @@ export class CategoryService {
     }
 
     updateCategoryById(id: number, category: Category): Observable<Category> {
-      return this.http.put<Category>(`${this.apiUrl}/${id}`, category);
+      return this.http.put<Category>(`${this.apiUrl}/${id}`, category, { headers: this.headers });
     }
 
 
