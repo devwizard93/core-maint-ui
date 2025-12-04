@@ -1,0 +1,56 @@
+<!-- Botón visible solo en pantallas pequeñas -->
+<button
+  (click)="toggleSidebar()"
+  class="btn btn-outline-dark d-md-none m-2"
+  type="button"
+>
+  ☰ Menú
+</button>
+
+<!-- Sidebar -->
+<nav
+  [ngClass]="{ 'd-none d-md-block': !isSmallScreen, 'd-block': sidebarVisible }"
+  class="sidebar bg-light p-3 vh-100"
+>
+  <ul class="nav flex-column">
+    <!-- Main -->
+    <li class="nav-item mb-3 border border-dark rounded p-2">
+      <span class="nav-link fw-bold text-uppercase">Main</span>
+      <ul class="nav flex-column ms-3 mt-2">
+        <li class="nav-item">
+          <a (click)="closeSidebar()" class="nav-link" routerLink="/sale" routerLinkActive="active">Sale</a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Administración -->
+    <li class="nav-item mb-3 border border-dark rounded p-2">
+      <span class="nav-link fw-bold text-uppercase">Administración</span>
+      <ul class="nav flex-column ms-3 mt-2">
+        <li class="nav-item">
+          <a (click)="closeSidebar()" class="nav-link" routerLink="/category" routerLinkActive="active">Category</a>
+        </li>
+        <li class="nav-item">
+          <a (click)="closeSidebar()" class="nav-link" routerLink="/product" routerLinkActive="active">Product</a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- System -->
+    <li class="nav-item border border-dark rounded p-2">
+      <span class="nav-link fw-bold text-uppercase">System</span>
+      <ul class="nav flex-column ms-3 mt-2">
+        <li class="nav-item">
+          <span class="nav-link disabled">Configuración</span>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<!-- Fondo oscuro cuando el menú está abierto -->
+<div
+  (click)="closeSidebar()"
+  *ngIf="sidebarVisible && isSmallScreen"
+  class="sidebar-backdrop"
+></div>

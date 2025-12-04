@@ -1,0 +1,20 @@
+.not-authorized-container {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.not-authorized-container h1 {
+  color: red;
+  font-size: 48px;
+}
+
+.not-authorized-container h2 {
+  color: darkred;
+}
+
+.not-authorized-container a {
+  color: blue;
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+}

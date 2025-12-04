@@ -1,0 +1,66 @@
+<div class="container mt-4">
+  <h3>Gestión de Categorías</h3>
+
+  <!-- Formulario para crear o editar -->
+  <form #categoryForm="ngForm" (ngSubmit)="createCategory()" class="mb-4">
+    <div class="mb-3">
+      <label class="form-label" for="name">Nombre de la categoría</label>
+      <input
+        [(ngModel)]="category.name"
+        class="form-control"
+        id="name"
+        name="name"
+        required
+        type="text"
+      />
+    </div>
+    <button [disabled]="categoryForm.invalid" class="btn btn-primary" type="submit">
+      {{ category.id ? 'Actualizar' : 'Crear' }}
+    </button>
+    <button
+      (click)="cancelEdit()"
+      *ngIf="category.id"
+      class="btn btn-secondary ms-2"
+      type="button"
+    >
+      Cancelar
+    </button>
+  </form>
+
+  <!-- Mensaje de éxito o error -->
+  <div *ngIf="message" [class.alert-danger]="categories.length === 0"
+       [class.alert-success]="categories.length > 0"
+       class="alert">
+    {{ message }}
+  </div>
+
+  <!-- Tabla de categorías -->
+  <table *ngIf="categories.length > 0" class="table table-bordered table-striped">
+    <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let cat of categories">
+      <td>{{ cat.id }}</td>
+      <td>{{ cat.name }}</td>
+      <td>
+        <button (click)="editCategory(cat)" class="btn btn-sm btn-warning me-2">
+          Editar
+        </button>
+        <button (click)="deleteCategoryById(cat.id)" class="btn btn-sm btn-danger">
+          Eliminar
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Mensaje si no hay categorías y no hay mensaje del backend -->
+  <div *ngIf="categories.length === 0 && !message" class="alert alert-info">
+    No hay categorías registradas.
+  </div>
+</div>
