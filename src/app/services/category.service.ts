@@ -19,7 +19,7 @@ export class CategoryService {
     'Authorization': 'Basic ' + btoa('admin:admin123')
   });
 
-  private apiUrl = 'http://localhost:8080/api/categories';
+  private apiUrl = 'http://192.168.1.10:8080/api/categories';
 
 
   constructor(private http: HttpClient) { }

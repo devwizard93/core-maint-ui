@@ -4,7 +4,7 @@ import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/auth';
+  private apiUrl = 'http://192.168.1.10:8080/auth';
   private tokenKey = 'authToken'; // única fuente de verdad
   private loggedIn = new BehaviorSubject<boolean>(this.hasToken());
 

@@ -15,7 +15,7 @@ export class SaleService {
     });
 
 
-     private apiUrl = 'http://localhost:8080/api/sale';
+     private apiUrl = 'http://192.168.1.10:8080/api/sale';
 
      constructor(private http: HttpClient) {}
 

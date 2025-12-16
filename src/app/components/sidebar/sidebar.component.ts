@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
+import { inject } from '@angular/core';
+
 
 
 @Component({
@@ -12,32 +15,39 @@ import { CommonModule } from '@angular/common';
 })
 export class SidebarComponent {
 
-sidebarVisible = false;
-isSmallScreen = false;
+  sidebarVisible = false;
+  isSmallScreen = false;
 
-ngOnInit() {
-  this.checkScreen();
-  window.addEventListener('resize', () => this.checkScreen());
-}
+  // Inyectamos servicios usando standalone
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
-checkScreen() {
-  this.isSmallScreen = window.innerWidth < 768;
-  if (!this.isSmallScreen) {
-    this.sidebarVisible = false;
+  ngOnInit() {
+    this.checkScreen();
+    window.addEventListener('resize', () => this.checkScreen());
   }
-}
 
-toggleSidebar() {
-  this.sidebarVisible = !this.sidebarVisible;
-}
-
-closeSidebar() {
-  if (this.isSmallScreen) {
-    this.sidebarVisible = false;
+  checkScreen() {
+    this.isSmallScreen = window.innerWidth < 768;
+    if (!this.isSmallScreen) {
+      this.sidebarVisible = false;
+    }
   }
-}
 
+  toggleSidebar() {
+    this.sidebarVisible = !this.sidebarVisible;
+  }
 
+  closeSidebar() {
+    if (this.isSmallScreen) {
+      this.sidebarVisible = false;
+    }
+  }
+
+  logout() {
+    this.authService.logout();        // rompe el token
+    this.router.navigate(['/login']);  // redirige al login
+  }
 
 
 }
