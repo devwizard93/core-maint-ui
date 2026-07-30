@@ -1,0 +1,11 @@
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+@Component({
+  selector: 'app-not-authorized',
+  standalone: true,
+  imports: [RouterModule],
+  templateUrl: './not-authorized.component.html',
+  styleUrls: ['./not-authorized.component.scss']
+})
+export class NotAuthorizedComponent {}

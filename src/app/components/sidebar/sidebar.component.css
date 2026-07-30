@@ -1,0 +1,92 @@
+/* --- General --- */
+.sidebar {
+  background: linear-gradient(180deg, #ffffff, #f7f7f7);
+  border-right: 2px solid #e0e0e0;
+  transition: transform 0.3s ease-in-out;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* --- Responsive Sidebar --- */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 230px;
+    height: 100vh;
+    z-index: 1050;
+    transform: translateX(-100%);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .sidebar.d-block {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1040;
+  }
+}
+
+/* --- Resto de tu estilo original --- */
+.section {
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  background-color: #fafafa;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  padding: 12px;
+}
+
+.section:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.section-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #555;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.link {
+  color: #333;
+  padding: 6px 0;
+  font-weight: 500;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.link:hover {
+  color: #0d6efd;
+  padding-left: 4px;
+}
+
+.active {
+  font-weight: 600;
+  color: #0d6efd;
+  position: relative;
+}
+
+.active::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  background-color: #0d6efd;
+  border-radius: 2px;
+}
+
+.nav-link.disabled {
+  color: #aaa;
+  cursor: not-allowed;
+}

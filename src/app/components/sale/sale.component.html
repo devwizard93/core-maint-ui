@@ -1,0 +1,128 @@
+<div class="d-flex flex-column gap-4">
+
+  <!-- 🧾 Detalle -->
+  <div class="container border border-dark p-3">
+    <div class="row justify-content-center align-items-start">
+      <!-- Tabla -->
+      <div class="col-12 col-md-8">
+        <div class="table-responsive">
+          <table class="table table-bordered table-sm text-center align-middle">
+            <thead class="table-secondary">
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Unit</th>
+              <th>Valor</th>
+              <th>Acción</th> <!-- Nueva columna -->
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let p of productsSelect; let i = index">
+              <td>{{ p.name }}</td>
+              <td>{{ p.price | currency:'CLP':'symbol' }}</td>
+              <td>1</td>
+              <td>{{ p.price | currency:'CLP':'symbol' }}</td>
+              <td>
+                <button class="btn btn-danger btn-sm" (click)="removeProduct(i)">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Botón al lado derecho -->
+      <div class="col-12 col-md-4 d-flex justify-content-center">
+        <button class="btn btn-success h-100 w-100" (click)="makeSale()">
+          Realizar Venta
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 📦 Categorías y Productos -->
+  <div class="container border border-dark p-3">
+    <div class="row">
+      <!-- Categorías -->
+      <div class="col-12 col-md-4 mb-4">
+        <div class="bg-light rounded shadow-sm overflow-auto">
+          <div *ngFor="let c of categories"
+               (click)="categorySelect(c.name, c.id!)"
+               class="px-3 py-2 border-bottom cursor-pointer"
+               style="cursor: pointer;">
+            {{ c.name }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Productos de la categoría -->
+      <div class="col-12 col-md-8" *ngIf="productsFilter.length > 0">
+        <h3 class="h5 mb-3">Productos de "{{ categoriesSelectName }}"</h3>
+        <div class="row g-2">
+          <div class="col-6 col-sm-4 col-lg-3 d-flex" *ngFor="let p of productsFilter">
+            <button
+              (click)="addProduct(p)"
+              class="btn btn-warning w-100 text-center fw-semibold shadow-sm"
+              style="
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                white-space: normal;
+              "
+            >
+              <span class="text-break text-center">{{ p.name }}</span>
+              <span class="fw-normal small">{{ p.price | currency:'CLP':'symbol' }}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 🧾 Boleta -->
+  <div class="container border border-dark p-3 mt-4" *ngIf="lastSale" id="receipt">
+    <h4 class="mb-3">Boleta de Venta</h4>
+
+    <table class="table table-bordered table-sm text-center align-middle">
+      <thead class="table-secondary">
+      <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let prod of lastSale.productList">
+        <td>{{ prod }}</td>
+        <td>
+          {{
+          getProductPrice(prod) | currency:'CLP':'symbol'
+          }}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="text-end fw-bold fs-5 mt-3">
+      Total: {{ lastSale.price | currency:'CLP':'symbol' }}
+    </div>
+
+    <div class="text-end text-muted small">
+      Fecha: {{ today | date:'short' }}
+    </div>
+  </div>
+
+  <!-- Botón de imprimir -->
+  <div class="text-end mt-3" *ngIf="lastSale">
+    <button class="btn btn-primary" (click)="printReceipt()">
+      Imprimir
+    </button>
+  </div>
+
+
+
+</div>

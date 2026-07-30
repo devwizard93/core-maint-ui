@@ -1,0 +1,12 @@
+<div *ngIf="auth.hasToken()" class="d-flex" style="min-height: 100vh;">
+  <app-sidebar></app-sidebar>
+
+  <main class="flex-grow-1 p-4 bg-light">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+<!-- Si no está logeado, no muestra el layout -->
+<div *ngIf="!auth.hasToken()">
+  <router-outlet></router-outlet>
+</div>

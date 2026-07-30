@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+  <div class="card shadow-lg border-0 p-4" style="width: 380px; border-radius: 1rem;">
+    <div class="card-body">
+      <h3 class="text-center mb-4 fw-bold text-primary">Iniciar sesión</h3>
+
+      <form #loginForm="ngForm" (ngSubmit)="login()">
+        <div class="form-floating mb-3">
+          <input
+            [(ngModel)]="user.username"
+            class="form-control"
+            id="username"
+            name="username"
+            placeholder="Usuario"
+            required
+            type="text"
+          />
+          <label for="username">Usuario</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input
+            [(ngModel)]="user.password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="Contraseña"
+            required
+            type="password"
+          />
+          <label for="password">Contraseña</label>
+        </div>
+
+        <button
+          [disabled]="!loginForm.valid"
+          class="btn btn-primary w-100 py-2 fw-semibold"
+          type="submit"
+        >
+          Entrar
+        </button>
+
+        <!-- 🟦 BOTÓN CREAR CUENTA -->
+        <button
+          class="btn btn-outline-secondary w-100 py-2 fw-semibold mt-3"
+          type="button"
+          (click)="goToRegister()"
+        >
+          Crear cuenta
+        </button>
+
+        <div
+          *ngIf="message"
+          [ngClass]="{ 'alert-success': success, 'alert-danger': !success }"
+          class="alert mt-3 text-center"
+        >
+          {{ message }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
